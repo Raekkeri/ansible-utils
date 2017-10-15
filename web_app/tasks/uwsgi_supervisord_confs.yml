@@ -1,0 +1,10 @@
+- template:
+    src: ansible-utils/web_app/uwsgi.ini
+    dest: "{{app_base_dir}}/uwsgi.ini"
+    mode: 0644
+    owner: '{{app_user}}'
+    group: '{{app_user}}'
+- template:
+    src: ansible-utils/web_app/supervisord.conf
+    dest: "/etc/supervisord/{{app_name}}.conf"
+

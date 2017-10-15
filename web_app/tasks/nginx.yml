@@ -1,0 +1,4 @@
+- template:
+   src: ansible-utils/web_app/nginx.conf
+   dest: '/etc/nginx/conf.d/{{app_name}}.conf'
+   mode: 0644

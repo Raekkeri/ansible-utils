@@ -1,0 +1,16 @@
+- name: Install supervisor
+  pip:
+    name: supervisor
+- copy:
+    src: ansible-utils/common/supervisord
+    dest: /etc/init.d/supervisord
+    mode: 0775
+- copy:
+    src: "{{ supervisor_conf }}"
+    dest: /etc/supervisord.conf
+    mode: 0644
+- file:
+    path: /etc/supervisord
+    state: directory
+    mode: 0755
+- command: chkconfig supervisord on

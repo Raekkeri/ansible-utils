@@ -1,0 +1,15 @@
+- name: Create Python3 virtualenv
+  command: 'virtualenv-3.4 venv3'
+  args:
+    chdir: '{{app_packages_dir}}/{{app_version}}'
+- name: Install requirements
+  pip:
+    requirements: '{{app_packages_dir}}/{{app_version}}/requirements.txt'
+    virtualenv: '{{app_packages_dir}}/{{app_version}}/venv3'
+    virtualenv_python: python3.4
+- file:
+    path: '{{app_packages_dir}}/{{app_version}}/venv3'
+    state: directory
+    owner: '{{app_user}}'
+    group: '{{app_user}}'
+    recurse: yes

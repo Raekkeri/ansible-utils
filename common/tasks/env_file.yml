@@ -1,0 +1,6 @@
+- name: Fetch env file from S3
+  command: 'aws s3 cp {{s3_env_file}} {{app_packages_dir}}/{{app_version}}/.env'
+- file:
+    path: '{{app_packages_dir}}/{{app_version}}/.env'
+    owner: '{{app_user}}'
+    group: '{{app_user}}'

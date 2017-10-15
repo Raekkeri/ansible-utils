@@ -1,0 +1,9 @@
+- name: Create Python3 virtualenv for uwsgi
+  command: 'virtualenv-3.4 /opt/py3'
+  args:
+    chdir: '/opt'
+- name: Install uwsgi
+  pip:
+    name: uwsgi
+    virtualenv: '/opt/py3'
+    virtualenv_python: python3.4

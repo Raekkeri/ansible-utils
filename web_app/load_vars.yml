@@ -1,0 +1,2 @@
+- include_vars: common_vars.yml
+# Secrets not needed for now: - include_vars: "{{ inventory_dir }}/secrets.yml"

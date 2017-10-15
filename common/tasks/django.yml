@@ -1,0 +1,6 @@
+- name: Run django migrations
+  command: '{{app_packages_dir}}/{{app_version}}/venv3/bin/python {{app_packages_dir}}/{{app_version}}/manage.py migrate --settings=config.settings.production'
+  environment:
+      DJANGO_READ_DOT_ENV_FILE: True
+  become: yes
+  become_user: '{{app_user}}'

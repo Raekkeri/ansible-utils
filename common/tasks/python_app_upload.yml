@@ -1,0 +1,19 @@
+- name: Ensure base dir exist
+  file: path='{{app_base_dir}}' state=directory owner={{app_user}} group={{app_user}}
+- name: Ensure packages dir exist
+  file: path='{{app_packages_dir}}' state=directory owner={{app_user}} group={{app_user}}
+- name: Ensure ensure version dir exist
+  file: path='{{app_packages_dir}}/{{app_version}}' state=directory owner={{app_user}} group={{app_user}}
+
+- copy:
+    src: ../dist/package.tar
+    dest: '{{app_packages_dir}}/{{app_version}}'
+- name: Untar
+  command: 'tar xvf {{app_packages_dir}}/{{app_version}}/package.tar'
+  args:
+    chdir: '{{app_packages_dir}}/{{app_version}}'
+- file:
+    path: '{{app_packages_dir}}/{{app_version}}'
+    owner: '{{app_user}}'
+    group: '{{app_user}}'
+    recurse: yes

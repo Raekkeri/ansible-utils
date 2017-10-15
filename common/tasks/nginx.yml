@@ -1,0 +1,10 @@
+
+- name: Install nginx
+  yum:
+    name: nginx
+    state: latest
+- copy:
+   src: ansible-utils/web/nginx.conf
+   dest: /etc/nginx/nginx.conf
+   mode: 0644
+- command: chkconfig nginx on

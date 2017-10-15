@@ -1,0 +1,18 @@
+- yum:
+    name: python34-devel
+- yum:
+    name: python34-virtualenv
+- yum:
+    name: postgresql-devel
+- yum:
+    name: python-devel
+- yum:
+    name: libffi-devel
+- yum:
+    name: "@Development tools"
+- yum:
+    name: zlib-devel
+- yum:
+    name: libjpeg-devel
+- yum:
+    name: openssl-devel
