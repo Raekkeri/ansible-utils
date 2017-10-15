@@ -1,0 +1,20 @@
+---
+- hosts: web
+  vars:
+      - supervisor_conf: ansible-utils/web/supervisor.conf
+  tasks:
+      - include: ansible-utils/common/tasks/directories.yml
+      - include: ansible-utils/common/tasks/python_os_requirements.yml
+      - include: ansible-utils/common/tasks/nginx.yml
+      - include: ansible-utils/common/tasks/supervisor.yml
+      - include: ansible-utils/common/tasks/uwsgi.yml
+
+      - name: Restart nginx
+        service:
+            name: nginx
+            state: restarted
+
+      - name: Restart Supervisord
+        service:
+            name: supervisord
+            state: restarted

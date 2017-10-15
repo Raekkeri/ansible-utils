@@ -1,0 +1,23 @@
+---
+- hosts: web
+  pre_tasks:
+      - include: ansible-utils/web_app/load_vars.yml
+  tasks:
+      - include: ansible-utils/web_app/tasks/app_user.yml
+      - include: ansible-utils/web_app/tasks/nginx.yml
+      - include: ansible-utils/common/tasks/python_app_upload.yml
+      - include: ansible-utils/common/tasks/python_app_virtualenv.yml
+      - include: ansible-utils/common/tasks/env_file.yml
+      - include: ansible-utils/common/tasks/django.yml
+      - include: ansible-utils/web_app/tasks/uwsgi_supervisord_confs.yml
+      - include: ansible-utils/common/tasks/python_app_postdeployment.yml
+
+      - name: Restart nginx
+        service:
+            name: nginx
+            state: restarted
+
+      - name: Restart Supervisord
+        service:
+            name: supervisord
+            state: restarted
