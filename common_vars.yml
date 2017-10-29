@@ -8,5 +8,5 @@ app_current_location: "/home/{{app_user}}/app/current"
 
 app_version: default
 
-s3_env_file: s3://sitename-configuration/confs/dev-env.txt
+s3_env_file: "s3://sitename-configuration/confs/dev-env.txt"
 server_name: www.example.com
